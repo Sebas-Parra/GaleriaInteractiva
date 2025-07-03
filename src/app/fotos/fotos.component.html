@@ -1,0 +1,8 @@
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  <div *ngFor="let img of imagenes" class="p-4 shadow-md bg-white rounded">
+    <img [src]="img.Imagen" alt="{{ img.Nombre }}" class="w-full h-96 object-contain rounded mb-2" />
+    <h3 class="text-lg font-bold">{{ img.Nombre }}</h3>
+    <p class="text-sm text-gray-600">Autor: {{ img.Autor }}</p>
+    <p class="text-sm text-gray-500">Año: {{ img.anio }}</p>
+  </div>
+</div>
