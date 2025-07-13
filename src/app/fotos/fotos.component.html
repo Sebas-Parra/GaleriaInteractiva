@@ -1,8 +1,22 @@
-<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-  <div *ngFor="let img of imagenes" class="p-4 shadow-md bg-white rounded">
-    <img [src]="img.Imagen" alt="{{ img.Nombre }}" class="w-full h-96 object-contain rounded mb-2" />
-    <h3 class="text-lg font-bold">{{ img.Nombre }}</h3>
-    <p class="text-sm text-gray-600">Autor: {{ img.Autor }}</p>
-    <p class="text-sm text-gray-500">Año: {{ img.anio }}</p>
+<p class="text-center text-sm text-gray-600 mb-2 italic">📌 Presiona en una imagen para agrandarla</p>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 m-3">
+  <div *ngFor="let img of imagenes" class="p-4 shadow-lg bg-white rounded" (click)="abrirModal(img)">
+    <img [src]="img.Imagen" alt="{{ img.Nombre }}" class="w-full max-h-80 object-contain rounded mb-2 border border-gray-200" />
+    <h3 class="text-lg font-bold font-mono">{{ img.Nombre }}</h3>
+    <p class="text-sm text-gray-500 font-mono"><strong>Tipo de coloración:</strong> {{ img.Color }}</p>
+    <p class="text-sm text-gray-500 font-mono"> <strong>Descripcion:</strong> {{ img.Descripcion }}</p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div *ngIf="imagenSeleccionada" class="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center">
+  <div class="bg-white p-4 rounded-lg shadow-xl max-w-3xl w-full relative">
+    <button (click)="cerrarModal()"
+            class="absolute top-2 right-2 text-gray-700 hover:text-red-500 text-xl font-bold">&times;</button>
+    <img [src]="imagenSeleccionada.Imagen"
+         [alt]="imagenSeleccionada.Nombre"
+         class="w-full h-auto max-h-[80vh] object-contain rounded-lg" />
+
   </div>
 </div>
