@@ -15,7 +15,7 @@ export class SupabaseService {
 
   async obtenerImagenes(): Promise<any[]> {
   const { data, error } = await this.supabase
-    .from('FotosGaleria') // 🔁 Reemplaza con el nombre de tu tabla
+    .from('FotosGaleria')
     .select('*');
 
   if (error) {
